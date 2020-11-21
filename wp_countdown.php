@@ -114,7 +114,7 @@ function makeContent(array $atts) {
 		}
 		
 		if (!empty($atts['template'])) {
-			$templates = new WP_Query(array('post_type' => 'elementor_library', 'name' => $atts['template']));
+			$templates = new WP_Query(array('post_type' => 'elementor_library', 'title' => $atts['template']));
 			
 			if ($templates->have_posts()) {
 				$templates->the_post();
