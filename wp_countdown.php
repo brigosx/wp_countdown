@@ -81,8 +81,6 @@ function makeContent(array $atts) {
 	$html .= "><div class='py-5'><div class='row'><div class='col-lg-10 mx-auto'>";
 	
 	if (!empty($atts['due_day']) && $cdd_day < $atts['due_day']) {
-		$title = !empty($atts['title']) ? $atts['title'] : "Something new is coming!";
-		
 		$data = json_encode($atts);
 		$gr_color = 1;
 		
@@ -95,7 +93,10 @@ function makeContent(array $atts) {
 		}
 			
 		$html .= "<div class='rounded bg-gradient-{$gr_color} text-white shadow p-5 text-center mb-5'>";
-		$html .= "<p class='mb-4 font-weight-bold shadowed_head'>{$title}</p>";
+		
+		if (!empty($atts['title']))
+			$html .= "<p class='mb-4 font-weight-bold shadowed_head'>{$atts['title']}</p>";
+		
 		$html .= "<div id='wp_countdown' class='countdown-circles d-flex flex-wrap justify-content-center pt-4'></div>";
 		$html .= "<script type='text/javascript'>jQuery('#wp_countdown').countdown('{$atts['due_day']}').on('update.countdown', function (event) {
 				var html = '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%D</span> Day%!d</div>';
