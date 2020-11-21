@@ -78,7 +78,7 @@ function makeContent(array $atts) {
 	    $html .= " style='display:none;'";
 	}
 	
-	$html .= "><div class='py-5'><div class='row'><div class='col-lg-10 mx-auto'>";
+	$html .= "><div class='row'><div class='col-lg-10 mx-auto'>";
 	
 	if (!empty($atts['due_day']) && $cdd_day < $atts['due_day']) {
 		$data = json_encode($atts);
@@ -99,13 +99,13 @@ function makeContent(array $atts) {
 		
 		$html .= "<div id='wp_countdown' class='countdown-circles d-flex flex-wrap justify-content-center pt-4'></div>";
 		$html .= "<script type='text/javascript'>jQuery('#wp_countdown').countdown('{$atts['due_day']}').on('update.countdown', function (event) {
-				var html = '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%D</span> Day%!d</div>';
-				html += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%H</span> Hr</div>';
-				html += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%M</span> Min</div>';
-				html += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%S</span> Sec</div>';
-				jQuery(this).html(event.strftime(html)) }).on('finish.countdown', function (event) { 
+				var reply = '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%D</span> Day%!d</div>';
+				reply += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%H</span> Hr</div>';
+				reply += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%M</span> Min</div>';
+				reply += '<div class=\"holder m-2\"><span class=\"h1 font-weight-bold\">%S</span> Sec</div>';
+				jQuery(this).html(event.strftime(reply)) }).on('finish.countdown', function (event) { 
 				jQuery.ajax({ type: 'POST', url: ajax_object.ajaxurl, data: { 'action': 'refreshContents', 'atts': {$data} }, success: function (output) { 
-				jQuery('#wp_cnt_scode').replaceWith(output) } }) })</script></div></div>";
+				jQuery('#wp_cnt_scode').replaceWith(output) } }) })</script></div>";
 	}
 	else if (!empty($atts['show_day']) && $cds_day < $atts['show_day']) {
 		if (!empty($atts['message'])) {
@@ -127,5 +127,5 @@ function makeContent(array $atts) {
 		}
 	}
 	
-	return $html."</div></div>";
+	return $html."</div></div></div>";
 }
