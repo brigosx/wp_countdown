@@ -26,3 +26,5 @@ The plugin offers the following parameters:
   <li><strong>template</strong>: For Elementor use only. Can display a saved Elementor template by using it's title (Optional)</li>
   <li><strong>color</strong>: A gradient background color (default is 1) number. Possible values 1 up to 4 (Optional)</li>
 </ul>
+
+<i>The "show_day" parameter should be used in combination with "due_day" and should always be greater than "due_day" parameter.</i>
