@@ -18,6 +18,11 @@ You can apply a shortcode provided by this plugin anywhere in your WordPress sit
 
 The plugin offers the following parameters:
 <ul>
-  <li>active: Possible values TRUE or FALSE</li>
-  <li>title: A title that will appear at the top</li>
+  <li><strong>active</strong>: Possible values TRUE or FALSE</li>
+  <li><strong>title</strong>: A title that will appear at the top (Optional)</li>
+  <li><strong>due_day</strong>: The date/time up to the counter will count down. Possible formats yyyy/MM/dd or yyyy/MM/dd HH:mm</li>
+  <li><strong>show_day</strong>: The date/time up to the display will be active. Possible formats yyyy/MM/dd or yyyy/MM/dd HH:mm (Optional)</li>
+  <li><strong>message</strong>: A text message or HTML code that will be displayed upon finishing the counting (Optional)</li>
+  <li><strong>template</strong>: For Elementor use only. Can display a saved Elementor template by using it's title (Optional)</li>
+  <li><strong>color</strong>: A gradient background color (default is 1) number. Possible values 1 up to 4 (Optional)</li>
 </ul>
