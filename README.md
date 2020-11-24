@@ -1,4 +1,4 @@
-# wp_countdown
+# wp_countdown a fancy countdown plugin for WordPress
 
 Create your own fancy count down for your posts or other WordPress pages. It is based on an idea found on the Internet by <a href="https://bootstrapious.com/p/bootstrap-countdown" target="_blank">BOOTSTRAPIOUS</a> and since it is based on Bootstrap library it is totally responsive.
 
