@@ -28,3 +28,5 @@ The plugin offers the following parameters:
 </ul>
 
 <i>The "show_day" parameter should be used in combination with "due_day" and should always be greater than "due_day" parameter.</i>
+
+You may find more details in my article at <a href="https://everfounders.com/x6sl" target="_blank">EverFounders.com</a>
