@@ -80,8 +80,9 @@ function makeContent(array $atts) {
 	
 	$html .= "><div class='row'><div class='col-lg-10 mx-auto'>";
 	
+	$data = json_encode($atts);
+	
 	if (!empty($atts['due_day']) && $cdd_day < $atts['due_day']) {
-		$data = json_encode($atts);
 		$gr_color = 1;
 		
 		if (!empty($atts['color'])) {
@@ -108,9 +109,12 @@ function makeContent(array $atts) {
 				jQuery('#wp_cnt_scode').replaceWith(output) } }) })</script></div>";
 	}
 	else if (!empty($atts['show_day']) && $cds_day < $atts['show_day']) {
+		$auto_refresh = false;
+		
 		if (!empty($atts['message'])) {
 			$msg = stripslashes($atts['message']);
 			$html .= "<div class='rounded shadow p-5 text-center mb-5'>{$msg}</div>";
+			$auto_refresh = true;
 		}
 		
 		if (!empty($atts['template'])) {
@@ -119,11 +123,19 @@ function makeContent(array $atts) {
 			if ($templates->have_posts()) {
 				$templates->the_post();
 				$the_content = apply_filters('the_content', get_the_content());			
-				if (!empty($the_content))
+				if (!empty($the_content)) {
 					$html .= "<div class='rounded shadow'>{$the_content}</div>";
+					$auto_refresh = true;
+				}
 			}
 			
 			wp_reset_postdata();
+		}
+		
+		if ($auto_refresh) {
+			$html .= "<script type='text/javascript'>var lapsed = new Date('". $atts['show_day'] . "').getTime() - new Date().getTime(); 
+			        if (lapsed > 0) setTimeout(function () { jQuery.ajax({ type: 'POST', url: ajax_object.ajaxurl, data: { 'action': 'refreshContents', 'atts': {$data} }, success: function (output) { 
+				    jQuery('#wp_cnt_scode').replaceWith(output) } }) }, lapsed);</script>";
 		}
 	}
 	
